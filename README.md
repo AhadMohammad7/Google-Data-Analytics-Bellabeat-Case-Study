@@ -1,6 +1,8 @@
 # Google-Data-Analytics-Bellabeat-Case-Study
 Author: Ahad Mohammad
+
 (IN PROGRESS)
+
 Date: 23/02/2025
 
 [Google Data Analytics Course](https://www.coursera.org/professional-certificates/google-data-analytics)
