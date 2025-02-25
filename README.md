@@ -50,7 +50,7 @@ The data is a sample of 30 users, which may prove to be too small of a sample to
 
 **Licensing, Privacy, Security, and Accessibility:**
 
-The data does have a CC0 Public Domain license, and the dataset does not disclose the identity of the respondents of the survey. In terms of accessibility, the data can be found on Kaggle, referenced to the original source: Zenodo.
+The data does have a CC0 Public Domain license, and the dataset does not disclose the identity of the respondents of the survey. In terms of accessibility, the data is *public* and can be found on Kaggle, referenced to the original source: Zenodo.
 
 **Data Integrity:**
 
