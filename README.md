@@ -13,6 +13,7 @@ In this case study, I will be working as a junior data analyst to solve the key 
 
 Bellabeat, a high-tech manufacturer of health-focused products for women. Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. I will be focusing on Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. I will look for key insights to help guide marketing strategy for the company. I will present my analysis to the Bellabeat executive team.
 
+
 ## Ask
 In this section, I will identify the business task and guiding questions for what I will be looking for throughout my analysis.
 
@@ -24,6 +25,7 @@ To analyze smart device usage and fitness data to help unlock new growth opportu
 1. What are some trends between how fitbit users use their smart device?
 2. What are some features or improvements Bellabeat can incorporate into their products?
 3. How do users engage with their smart device? What do they look for?
+
 
 ## Prepare
 
@@ -57,5 +59,6 @@ The data does contain blanks, and incorrect date formats, which can be cleaned d
 **Data Relevance**
 
 While the data is original, cited, and comprehensive, there may be some limitations due to the short period of data (spanning 2 months) and the fact that the data was captured in 2016. However, there are still insights that could be discovered from cleaning, and processing the data. 
+
 
 ## Process
