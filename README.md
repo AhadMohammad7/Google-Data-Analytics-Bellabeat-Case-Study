@@ -1,7 +1,7 @@
 # Google-Data-Analytics-Bellabeat-Case-Study
 Author: Ahad Mohammad
 
-(IN PROGRESS)
+**(IN PROGRESS)**
 
 Date: 23/02/2025
 
@@ -9,7 +9,7 @@ Date: 23/02/2025
 
 ## Introduction / Background 
 
-In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](), [Analyze](), and [Act]().
+In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#process), [Analyze](), and [Act]().
 
 Bellabeat, a high-tech manufacturer of health-focused products for women. Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. I will be focusing on Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. I will look for key insights to help guide marketing strategy for the company. I will present my analysis to the Bellabeat executive team.
 
@@ -33,8 +33,29 @@ The dataset was obtained from Kaggle and was published on Zenodo. It contains th
 
 **Data Organization:**
 
+The data proves to be a bit out dated as it was captured in 2016. The gap in the advancement of technology could prove to be slightly inaccurate. 
 The data is organized into 2 periods 3.12.16-4.11.16 and 4.12.16-5.12.16. The data is in wide format.
 
 **Data Bias/Credibility:**
 
+The data is a sample of 30 users, which may prove to be too small of a sample to determine accurate and effective insights. Furthermore, the data has no mention of demographics. Bellabeat offers products to female only customers, without knowing the gender of the fitbit users it could impact the findings of the analysis. Lastly, the data is credible as it is sourced by Zenodo and is an original dataset, the only downside being that the data spans over 2 months. This could leave out valuable information as there could be seasonal changes in the key metrics used in the analysis.
 
+* **Reliability:** The dataset is posted on Zenodo and Kaggle with all information related to the source of the data, and its origin.
+* **Original:** The dataset is original in terms of its posting on Zenodo. There are no copies of this dataset on Zenodo.
+* **Comprehensive:** The data in the datasets are labelled and seperated in rows and columns. The data proves to be in structured format, allowing for us to be able to perform analysis.
+* **Current:** The data is not considered current as it was captured in 2016. This could limit the relevance of the data.
+* **Cited:** The dataset on Zenodo offers citation, showing who was responsible for the creation of the data.
+
+**Licensing, Privacy, Security, and Accessibility:**
+
+The data does have a CC0 Public Domain license, and the dataset does not disclose the identity of the respondents of the survey. In terms of accessibility, the data can be found on Kaggle, referenced to the original source: Zenodo.
+
+**Data Integrity:**
+
+The data does contain blanks, and incorrect date formats, which can be cleaned during the data processing cycle. However, the data is from a reliable source (Zenodo), and does contain private keys (ID) to differentiate the data between users.
+
+**Data Relevance**
+
+While the data is original, cited, and comprehensive, there may be some limitations due to the short period of data (spanning 2 months) and the fact that the data was captured in 2016. However, there are still insights that could be discovered from cleaning, and processing the data. 
+
+## Process
