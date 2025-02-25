@@ -1,9 +1,13 @@
 # Google-Data-Analytics-Bellabeat-Case-Study
 Author: Ahad Mohammad
 
-**(IN PROGRESS)**
-
 Date: 23/02/2025
+
+**(IN PROGRESS)** 
+
+Last Updated: 25/02/2025
+
+
 
 [Google Data Analytics Course](https://www.coursera.org/professional-certificates/google-data-analytics)
 
@@ -62,3 +66,40 @@ While the data is original, cited, and comprehensive, there may be some limitati
 
 
 ## Process
+
+In this section, I will be processing/cleaning the data prior to analyzing.
+
+### Setting up my environment
+
+* tidyverse: A collection of R packages designed for data science, including ggplot2, dplyr, tidyr, readr, and more. It helps with data manipulation, visualization, and importing/exporting data.
+* janitor: Helps clean and format data, particularly useful for handling messy column names and duplicate values. Functions like clean_names() automatically standardize column names.
+* skimr: Used for quickly summarizing datasets. The skim() function provides an overview of missing values, data types, and summary statistics in a more detailed way than summary().
+
+```{r}
+install.packages("tidyverse")
+install.packages("janitor")
+install.packages("skimr")
+```
+
+### Loading Packages
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(skimr)
+```
+
+### Importing Data
+
+Files will be read and assigned to an object so that they can be viewed and transformed.
+
+```{r}
+p1_daily_activity <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/dailyActivity_merged.csv")
+p2_daily_activity <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
+p1_hourly_calories <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlyCalories_merged.csv")
+p2_hourly_calories <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlyCalories_merged.csv")
+p1_minute_sleep <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteSleep_merged.csv")
+p2_minute_sleep <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteSleep_merged.csv")
+p1_hourly_steps <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlySteps_merged.csv")
+p2_hourly_steps <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
+```
