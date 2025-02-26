@@ -5,7 +5,7 @@ Date: 23/02/2025
 
 **(IN PROGRESS)** 
 
-Last Updated: 25/02/2025
+Last Updated: 26/02/2025
 
 
 
@@ -103,3 +103,57 @@ p2_minute_sleep <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.
 p1_hourly_steps <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlySteps_merged.csv")
 p2_hourly_steps <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
 ```
+### Merging Datasets
+
+Note how there is a p1 and p2 file for each metric. This is due to there being two seperate datasets as there are two periods over which the data was collected. The datasets are structured in the same format, therefore I will be merging them using the rbind function.
+
+```{r}
+daily_activity <- rbind(p1_daily_activity,p2_daily_activity)
+hourly_calories <- rbind(p1_hourly_calories,p2_hourly_calories)
+minute_sleep <- rbind(p1_minute_sleep,p2_minute_sleep)
+hourly_steps <- rbind(p1_hourly_steps,p2_hourly_steps)
+```
+
+### Checking Data 
+
+Checking column names and data types
+
+```{r}
+str(daily_activity)
+str(hourly_calories)
+str(minute_sleep)
+str(hourly_steps)
+```
+
+Using janitor function skim_without_charts to do a final check to see if any inconsistencies in the datasets.
+
+```{r}
+skim_without_charts(daily_activity)
+skim_without_charts(hourly_calories)
+skim_without_charts(minute_sleep)
+skim_without_charts(hourly_steps)
+```
+
+Quick check for total number of nulls in each dataset
+
+```{r}
+sum(is.na(daily_activity))
+sum(is.na(hourly_calories))
+sum(is.na(minute_sleep))
+sum(is.na(hourly_steps))
+```
+
+After checking the data, we are able to see that the date column is a char type which will need to be changed to date. There are 0 null values, and we need to ensure that all column names are consistent. Duplicate values will also have to be cleaned.
+
+### Cleaning Data
+
+Note: Column names are cleaned using clean_names function to ensure consistency
+
+```{r}
+daily_activity <- clean_names(daily_activity)
+hourly_calories <- clean_names(hourly_calories)
+minute_sleep <- clean_names(minute_sleep)
+hourly_steps <- clean_names(hourly_steps)
+```
+
+
