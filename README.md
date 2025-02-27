@@ -13,9 +13,9 @@ Last Updated: 26/02/2025
 
 ## Introduction / Background 
 
-In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#process), [Analyze](), and [Act]().
+In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#process), [Analyze](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#analyze), and [Act]().
 
-Bellabeat, a high-tech manufacturer of health-focused products for women. Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. I will be focusing on Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. I will look for key insights to help guide marketing strategy for the company. I will present my analysis to the Bellabeat executive team.
+Bellabeat is a high-tech manufacturer of health-focused products for women. Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. I will be focusing on Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. I will look for key insights to help guide marketing strategy for the company. I will present my analysis to the Bellabeat executive team.
 
 
 ## Ask
@@ -179,3 +179,11 @@ hourly_steps <- hourly_steps %>%
 minute_sleep <- minute_sleep %>%
   mutate(date = as.POSIXct(date, format = "%m/%d/%Y %I:%M:%S %p"))
 ```
+## Analysis
+
+In this section I will be doing the following:
+* Descriptive Stats → Summarize activity, sleep, and calorie data.
+* Correlations → Does more activity = better sleep? More steps = more calories burned?
+* Trends Over Time → Activity patterns (by hour, weekday vs. weekend).
+* Segmentation → Group users by behavior (e.g., active vs. inactive users).
+* Visualizations → Use ggplot2 to bring insights to life.
