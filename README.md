@@ -156,4 +156,26 @@ minute_sleep <- clean_names(minute_sleep)
 hourly_steps <- clean_names(hourly_steps)
 ```
 
+Removing duplicate data. In this step the distinct function will remove any duplicate entries (rows) ensuring that the same data is not used in the analysis process.
 
+```{r}
+daily_activity <- distinct(daily_activity)
+hourly_calories <- distinct(hourly_calories)
+minute_sleep <- distinct(minute_sleep)
+hourly_steps <- distinct(hourly_steps)
+```
+Changing variable type (char to date and date/time).
+
+```{r}
+daily_activity <- daily_activity %>%
+  mutate(activity_date = as.Date(activity_date, format = "%m/%d/%Y"))
+
+hourly_calories <- hourly_calories %>%
+  mutate(activity_hour = as.POSIXct(activity_hour, format = "%m/%d/%Y %I:%M:%S %p"))
+
+hourly_steps <- hourly_steps %>%
+  mutate(activity_hour = as.POSIXct(activity_hour, format = "%m/%d/%Y %I:%M:%S %p"))
+
+minute_sleep <- minute_sleep %>%
+  mutate(date = as.POSIXct(date, format = "%m/%d/%Y %I:%M:%S %p"))
+```
