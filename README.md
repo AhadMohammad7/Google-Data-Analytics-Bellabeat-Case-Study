@@ -179,7 +179,7 @@ hourly_steps <- hourly_steps %>%
 minute_sleep <- minute_sleep %>%
   mutate(date = as.POSIXct(date, format = "%m/%d/%Y %I:%M:%S %p"))
 ```
-## Analysis
+## Analyze
 
 In this section I will be doing the following:
 * Descriptive Stats → Summarize activity, sleep, and calorie data.
