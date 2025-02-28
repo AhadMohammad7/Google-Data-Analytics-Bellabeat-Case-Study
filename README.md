@@ -187,3 +187,48 @@ In this section I will be doing the following:
 * Trends Over Time → Activity patterns (by hour, weekday vs. weekend).
 * Segmentation → Group users by behavior (e.g., active vs. inactive users).
 * Visualizations → Use ggplot2 to bring insights to life.
+
+
+### Daily Activity
+
+I will be focusing on the daily activity dataset to determine if there are any insights. I will be focusing on is total_steps by id.
+
+Creating a data frame only containing the data that is needed
+```{r}
+daily_activity_average <- daily_activity %>%
+  select(id, total_steps)
+```
+
+
+Filtering out rows with 0 total steps as it will affect the overall average # of steps per id
+```{r}
+daily_activity_average <- daily_activity %>%
+  filter(total_steps > 0)
+```
+
+Grouping by ID and summarizing the steps to find the mean 
+```{r}
+daily_activity_average <- daily_activity_average %>%
+  group_by(id) %>%
+  summarise(mean_steps = mean(total_steps))
+```
+
+
+Plotting the ID on the X axis with the average number of steps on the Y axis
+```{r}
+ggplot(daily_activity_average, aes(x = reorder(id, mean_steps), y = mean_steps)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  geom_hline(yintercept = 7500, linetype = "dashed", color = "red") +  # Add horizontal line at 7500
+  geom_text(aes(x = 10, y = 7500, label = "Daily Recommendation # of Steps"),
+            color = "red", angle = 0, vjust = -0.5) +  # Add label for the line
+  labs(title = "Average Steps per ID", 
+       x = "User ID", 
+       y = "Average Steps") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))  # Rotate x-axis labels
+```
+
+![Average Steps per ID](https://github.com/user-attachments/assets/953b214b-fa54-4461-bcb7-00dfdf3202b9)
+
+The graph shows the mean number of steps per ID. According to healthcare professionals the recommended number of daily steps is between 7500-1000 steps. A dotted line was placed on the graph to show how many users fall above and under the recommended amount.
+
