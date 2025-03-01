@@ -232,3 +232,44 @@ ggplot(daily_activity_average, aes(x = reorder(id, mean_steps), y = mean_steps))
 
 The graph shows the mean number of steps per ID. According to healthcare professionals the recommended number of daily steps is between 7500-1000 steps. A dotted line was placed on the graph to show how many users fall above and under the recommended amount.
 
+Filtering out ID's whose averages are under 7500 steps
+```{r}
+id_steps_under <- daily_activity_average %>%
+  filter(mean_steps < 7500)
+```
+
+Counting the number of ID's that are under 7500 steps
+```{r}
+num_steps_under <- nrow(id_steps_under)
+```
+
+Counting entire population of the dataset
+```{r}
+total_population <- nrow(daily_activity_average)
+```
+
+Creating a dataset that contains the number of people above the daily recommendation of 7500 steps and under 7500 steps.
+```{r}
+over_under_steps <- data.frame(
+  category = c("Over 7500 Steps", "Under 7500 Steps"),
+  count = c(num_steps_under, total_population - num_steps_under))
+```
+
+
+Plotting a pie chart to visualize the number of respondents from the survey to see if they are meeting daily recommendations.
+```{r}
+ggplot(over_under_steps,aes(x=" ", y= count, fill= category)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  ggtitle("Proportion of People with Average Steps Above and Under 7,500") +
+  geom_text(aes(label = count), 
+            position = position_stack(vjust = 0.5),  
+            color = "black", size = 5) +
+  theme_void()
+```
+
+![Proportion of People with Average Steps Above and Under 7,500 (1)](https://github.com/user-attachments/assets/0562c720-da76-443c-acb5-d6371e9e4ad7)
+
+
+As seen in the pie chart, nearly half of the sample meets the daily recommendation where the other half falls short. This chart gives us a high level overview of the behavioural patterns between the survery respondents. It would be a good idea to send reminders daily to the smart device users to meet the daily recommendations. Also set personalized goals if they are athletes and/or someone who is trying to stay healthy.
+
