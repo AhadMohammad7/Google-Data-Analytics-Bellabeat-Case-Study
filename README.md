@@ -273,3 +273,43 @@ ggplot(over_under_steps,aes(x=" ", y= count, fill= category)) +
 
 As seen in the pie chart, nearly half of the sample meets the daily recommendation where the other half falls short. This chart gives us a high level overview of the behavioural patterns between the survery respondents. It would be a good idea to send reminders daily to the smart device users to meet the daily recommendations. Also set personalized goals if they are athletes and/or someone who is trying to stay healthy.
 
+### Hourly Calories
+
+I will now be looking at the hourly calories dataset.
+
+Creating a new column stating day of the week. (ex. Jan 1, 2025 would become "Wednesday")
+```{r}
+hourly_calories$day_of_week <- weekdays(hourly_calories$activity_hour)
+```
+
+Creating a new column stating the hour only. 
+```{r}
+hourly_calories$time <- format(hourly_calories$activity_hour, "%H")
+```
+
+Creating a new data frame containing the day of the week and the hour of the day, and average calories burnt. This will show us the average calories burnt by the hour on each specific day of the week.
+```{r}
+hourly_calories_average <- hourly_calories %>%
+  group_by(day_of_week,time) %>%
+  summarise(average_calories_hourly = mean(calories))
+```
+
+Formatting the new column "time" to avoid data type issues when plotting.
+```{r}
+hourly_calories_average$time <- as.POSIXct(hourly_calories_average$time,format="%H")
+```
+
+Plotting the line chart. This showcases the Average Calories Burnt by the Hour which is grouped by the day of the week. This can give us a high level view if calories being burnt are consistent throughout the week and if users will need reminders to burn calories.
+```{r}
+ggplot(hourly_calories_average,aes(x=time, y= average_calories_hourly,group=day_of_week,color=day_of_week))+
+  geom_line() +
+  facet_wrap(~day_of_week, ncol=2) +
+  labs(
+    title = "Average Calories Burnt by the Hour (Grouped by Day)",
+    x= "Hour",
+    y= "Average Calories Burnt"
+  ) +
+  scale_x_datetime(date_labels = "%H", date_breaks = "2 hours") +
+  theme(axis.text.x = element_text(angle=45, hjust = 1))
+```
+![Average Calories Burnt by the Hour (Grouped by Day)](https://github.com/user-attachments/assets/0139742c-0ca5-48fb-8f11-a6610e676e31)
