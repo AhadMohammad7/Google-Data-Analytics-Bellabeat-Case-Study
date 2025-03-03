@@ -13,7 +13,7 @@ Last Updated: 2/03/2025
 
 ## Introduction / Background 
 
-In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#process), [Analyze](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#analyze), and [Act]().
+In this case study, I will be working as a junior data analyst to solve the key **business task** at hand while utilizing data analysis processes: [Ask](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#ask), [Prepare](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#prepare), [Process](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#process), [Analyze](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#analyze), and [Act](https://github.com/AhadMohammad7/Google-Data-Analytics-Bellabeat-Case-Study/blob/main/README.md#act).
 
 Bellabeat is a high-tech manufacturer of health-focused products for women. Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. I will be focusing on Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. I will look for key insights to help guide marketing strategy for the company. I will present my analysis to the Bellabeat executive team.
 
@@ -328,6 +328,30 @@ ggplot(sleep_average, aes(x=reorder(id, average_sleep),y=average_sleep))+
 ```
 ![Average Sleep by ID](https://github.com/user-attachments/assets/cafc15ee-bd40-48a9-804f-69747eb4b8e8)
 
+The chart above showcases the number of IDs getting sufficient sleep. Based on this data Bellabeat can implement reminders and goals for users to sleep on time, and/or to potentially see a doctor if the time in bed and time asleep has a big variance. Lastly, Bellabeat can offer other products that target their consumers who deal with insomnia.
+
+## Act
+
+Upon Analyzing the 3 categories of data provided by the Fitbit respondents, we can see that there are a few suggestions and insights that can help Bellebeat improve their marketing strategy and offer products that will help improve the success of the organization.
+
+**Daily Activity Reminders/Goals**
+* Bellabeat can offer a goal-like system that offers reminders and allows users to set goals.
+* This will in turn give a more personalized experience catered to the users lifestyle.
+* Bellabeat can offer products that will help users achieve their daily goals such as sportswear that compliments their lifestyle.
+
+**Hourly Calories**
+* The hourly calories analysis showed us that the calories being burnt are mostly consistent, with the expection of Sunday being a little below what is burned on the rest of the days of the week.
+* Bellabeat can in turn create reminders for users on the weekends as that is when users are most likely to be off from work/relaxing.
+
+**Average Sleep**
+* Despite there being a lack of data for the average sleep, there are still important insights to be pulled from what data is available
+* The sleep data shows that there are users who are barely getting 7 hours of sleep or less. Bellabeat can offer a feature in their app which allows for users to select how many hours of sleep they are aiming for, with scheduling options that account for what time they should sleep, and wake up say if they have work.
+* Bellabeat can captilize on the fact that there are users who deal with insomnia. This can give Bellabeat the opportunity to offer products to users who they can see have significant time in bed, but not nearly enough time asleep.
 
 
 
+## Tools/Platforms Used
+
+* **RStudio**
+* **Kaggle**
+* **Zenodo**
