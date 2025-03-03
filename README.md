@@ -3,10 +3,6 @@ Author: Ahad Mohammad
 
 Date: 23/02/2025
 
-**(IN PROGRESS)** 
-
-Last Updated: 2/03/2025
-
 
 
 [Google Data Analytics Course](https://www.coursera.org/professional-certificates/google-data-analytics)
