@@ -98,8 +98,7 @@ p1_daily_activity <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 
 p2_daily_activity <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
 p1_hourly_calories <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlyCalories_merged.csv")
 p2_hourly_calories <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlyCalories_merged.csv")
-p1_minute_sleep <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteSleep_merged.csv")
-p2_minute_sleep <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteSleep_merged.csv")
+p2_day_sleep <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
 p1_hourly_steps <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlySteps_merged.csv")
 p2_hourly_steps <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
 ```
@@ -110,7 +109,7 @@ Note how there is a p1 and p2 file for each metric. This is due to there being t
 ```{r}
 daily_activity <- rbind(p1_daily_activity,p2_daily_activity)
 hourly_calories <- rbind(p1_hourly_calories,p2_hourly_calories)
-minute_sleep <- rbind(p1_minute_sleep,p2_minute_sleep)
+day_sleep <- p2_day_sleep
 hourly_steps <- rbind(p1_hourly_steps,p2_hourly_steps)
 ```
 
@@ -121,7 +120,7 @@ Checking column names and data types
 ```{r}
 str(daily_activity)
 str(hourly_calories)
-str(minute_sleep)
+str(day_sleep)
 str(hourly_steps)
 ```
 
@@ -130,7 +129,7 @@ Using janitor function skim_without_charts to do a final check to see if any inc
 ```{r}
 skim_without_charts(daily_activity)
 skim_without_charts(hourly_calories)
-skim_without_charts(minute_sleep)
+skim_without_charts(day_sleep)
 skim_without_charts(hourly_steps)
 ```
 
@@ -139,7 +138,7 @@ Quick check for total number of nulls in each dataset
 ```{r}
 sum(is.na(daily_activity))
 sum(is.na(hourly_calories))
-sum(is.na(minute_sleep))
+sum(is.na(day_sleep))
 sum(is.na(hourly_steps))
 ```
 
@@ -152,7 +151,7 @@ Note: Column names are cleaned using clean_names function to ensure consistency
 ```{r}
 daily_activity <- clean_names(daily_activity)
 hourly_calories <- clean_names(hourly_calories)
-minute_sleep <- clean_names(minute_sleep)
+day_sleep <- clean_names(day_sleep)
 hourly_steps <- clean_names(hourly_steps)
 ```
 
@@ -161,7 +160,7 @@ Removing duplicate data. In this step the distinct function will remove any dupl
 ```{r}
 daily_activity <- distinct(daily_activity)
 hourly_calories <- distinct(hourly_calories)
-minute_sleep <- distinct(minute_sleep)
+day_sleep <- distinct(day_sleep)
 hourly_steps <- distinct(hourly_steps)
 ```
 Changing variable type (char to date and date/time).
@@ -175,9 +174,6 @@ hourly_calories <- hourly_calories %>%
 
 hourly_steps <- hourly_steps %>%
   mutate(activity_hour = as.POSIXct(activity_hour, format = "%m/%d/%Y %I:%M:%S %p"))
-
-minute_sleep <- minute_sleep %>%
-  mutate(date = as.POSIXct(date, format = "%m/%d/%Y %I:%M:%S %p"))
 ```
 ## Analyze
 
@@ -313,3 +309,36 @@ ggplot(hourly_calories_average,aes(x=time, y= average_calories_hourly,group=day_
   theme(axis.text.x = element_text(angle=45, hjust = 1))
 ```
 ![Average Calories Burnt by the Hour (Grouped by Day)](https://github.com/user-attachments/assets/0139742c-0ca5-48fb-8f11-a6610e676e31)
+
+We can see the number of calories being burnt on a day to day basis including weekends. We can also see on Sundays that there is a bit less of calories being burnt in comparison to the rest of the days of the week. Bellabeat can potentially add features that send out reminders during the weekends and/or certain days that their customers are not burning enough calories to help them stay fit.
+
+### Sleep Analysis
+
+A data frame was created to transform the total number of minutes asleep to the average number of minutes asleep. By dividing by 60 we are able to convert minutes to hours.
+```{r}
+sleep_average <- day_sleep %>%
+  group_by(id) %>%
+  summarise(
+    average_sleep = (mean(total_minutes_asleep)/60), 
+    average_time_in_bed= (mean(total_time_in_bed)/60))
+```
+
+A bar graph was plotted to determine how many ID's were getting the recommended amount of sleep (7-8 Hours).
+```{r}
+ggplot(sleep_average, aes(x=reorder(id, average_sleep),y=average_sleep))+
+  geom_bar(stat="identity", fill="red",color="black") +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "black") +
+  geom_text(aes(x = 5, y = 7, label = "Daily Recommended Sleep"),
+            color = "black", angle = 0, vjust = -0.5) +
+  labs(
+    title = "Average Sleep by ID",
+    x = "ID",
+    y = "Hours Asleep"
+  ) +
+  theme(axis.text.x=element_text(angle = 90, hjust =1))
+```
+![Average Sleep by ID](https://github.com/user-attachments/assets/cafc15ee-bd40-48a9-804f-69747eb4b8e8)
+
+
+
+
