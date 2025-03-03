@@ -99,8 +99,6 @@ p2_daily_activity <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 
 p1_hourly_calories <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlyCalories_merged.csv")
 p2_hourly_calories <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlyCalories_merged.csv")
 p2_day_sleep <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
-p1_hourly_steps <- read.csv("mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlySteps_merged.csv")
-p2_hourly_steps <- read.csv("mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
 ```
 ### Merging Datasets
 
@@ -110,7 +108,6 @@ Note how there is a p1 and p2 file for each metric. This is due to there being t
 daily_activity <- rbind(p1_daily_activity,p2_daily_activity)
 hourly_calories <- rbind(p1_hourly_calories,p2_hourly_calories)
 day_sleep <- p2_day_sleep
-hourly_steps <- rbind(p1_hourly_steps,p2_hourly_steps)
 ```
 
 ### Checking Data 
@@ -121,7 +118,6 @@ Checking column names and data types
 str(daily_activity)
 str(hourly_calories)
 str(day_sleep)
-str(hourly_steps)
 ```
 
 Using janitor function skim_without_charts to do a final check to see if any inconsistencies in the datasets.
@@ -130,7 +126,6 @@ Using janitor function skim_without_charts to do a final check to see if any inc
 skim_without_charts(daily_activity)
 skim_without_charts(hourly_calories)
 skim_without_charts(day_sleep)
-skim_without_charts(hourly_steps)
 ```
 
 Quick check for total number of nulls in each dataset
@@ -139,7 +134,6 @@ Quick check for total number of nulls in each dataset
 sum(is.na(daily_activity))
 sum(is.na(hourly_calories))
 sum(is.na(day_sleep))
-sum(is.na(hourly_steps))
 ```
 
 After checking the data, we are able to see that the date column is a char type which will need to be changed to date. There are 0 null values, and we need to ensure that all column names are consistent. Duplicate values will also have to be cleaned.
@@ -152,7 +146,6 @@ Note: Column names are cleaned using clean_names function to ensure consistency
 daily_activity <- clean_names(daily_activity)
 hourly_calories <- clean_names(hourly_calories)
 day_sleep <- clean_names(day_sleep)
-hourly_steps <- clean_names(hourly_steps)
 ```
 
 Removing duplicate data. In this step the distinct function will remove any duplicate entries (rows) ensuring that the same data is not used in the analysis process.
@@ -161,7 +154,6 @@ Removing duplicate data. In this step the distinct function will remove any dupl
 daily_activity <- distinct(daily_activity)
 hourly_calories <- distinct(hourly_calories)
 day_sleep <- distinct(day_sleep)
-hourly_steps <- distinct(hourly_steps)
 ```
 Changing variable type (char to date and date/time).
 
@@ -170,9 +162,6 @@ daily_activity <- daily_activity %>%
   mutate(activity_date = as.Date(activity_date, format = "%m/%d/%Y"))
 
 hourly_calories <- hourly_calories %>%
-  mutate(activity_hour = as.POSIXct(activity_hour, format = "%m/%d/%Y %I:%M:%S %p"))
-
-hourly_steps <- hourly_steps %>%
   mutate(activity_hour = as.POSIXct(activity_hour, format = "%m/%d/%Y %I:%M:%S %p"))
 ```
 ## Analyze
